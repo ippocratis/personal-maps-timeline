@@ -24,4 +24,4 @@ If you don't have or don't want to use a google api you can use nominatim revers
 
 Visit localhost:8765 or the ip address of you local machine e.g. 192.168.1.24:8765
 
-![](personal-maps-timeline/assets/route.png
+![](personal-maps-timeline/assets/route.png)
