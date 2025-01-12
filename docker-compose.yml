@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./personal-maps-timeline:/var/www/html
+    networks:
+      - timeline-network
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8765:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./personal-maps-timeline:/var/www/html
+    depends_on:
+      - php
+    networks:
+      - timeline-network
+
+  db:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: personal_location_history
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - timeline-network
+
+volumes:
+  db_data:
+
+networks:
+  timeline-network:
