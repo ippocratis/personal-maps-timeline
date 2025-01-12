@@ -11,6 +11,8 @@ All credits to @Rundiz
                                                              
 - Create the db and tables `docker exec -it db mariadb -uroot -pexample  personal_location_history < personal-maps-timeline/mariadb-structure.sql`
 
+- Run `docker exec -it php composer update`
+
 - Import timeline json files to db `docker exec -it php /var/www/html/import-json-to-db.php`
 
 To retrieve place names instead of raw coords run
