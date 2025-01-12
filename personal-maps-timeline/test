@@ -1,0 +1,5 @@
+<?php
+include 'HTTP/common/html-head.php';
+include 'HTTP/common/html-foot.php';
+echo "Inclusion successful.";
+
