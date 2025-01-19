@@ -1,7 +1,7 @@
 <?php
 
 if (strtolower(php_sapi_name()) !== 'cli') {
-    throw new \Exception('Please run this file from command line.');
+    throw new \Exception('Please run this file from the command line.');
     exit();
 }
 
@@ -55,6 +55,7 @@ if ($result) {
 
         if (isset($placeObj->display_name)) {
             $placeName = trim($placeObj->display_name);
+            $placeName = trimPlaceName($placeName); // Trim the place name
             echo '  "' . $placeName . '"';
         } else {
             echo '  Error retrieving place details.' . PHP_EOL;
@@ -117,3 +118,20 @@ function nominatimReverseGeocode(float $latitude, float $longitude)
 
     return $response;
 }
+
+/**
+ * Trims the place name to a shorter, relevant part.
+ *
+ * @param string $placeName
+ * @return string
+ */
+function trimPlaceName(string $placeName): string
+{
+    // Attempt to split and get the most relevant part of the place name
+    $parts = explode(',', $placeName);
+    if (isset($parts[0])) {
+        return trim($parts[0]); // Return the first part
+    }
+    return $placeName; // Fallback to the full name if splitting fails
+}
+
