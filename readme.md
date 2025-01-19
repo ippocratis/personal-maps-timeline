@@ -13,6 +13,9 @@ All credits to @Rundiz
 
 - Run `docker exec -it php composer update`
 
+- Convert any old Takeout location history json file to the new segmented format.
+`python old_to_new_format.py Dir_holds-old_json_files  save_dir_for_converted_jsons`
+
 - Import timeline json files to db `docker exec -it php php /var/www/html/import-json-to-db.php`
 
 To retrieve place names instead of raw coords run
